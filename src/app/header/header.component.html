@@ -11,7 +11,7 @@
         </svg>
         <h3 class="m-0 suffix is-wider">XLMAnchor</h3>
       </a>
-      <button class="nav-menu p-h" (click)="showmenu($event)">
+      <button class="nav-menu p-h {{openNav?'change':''}}" (click)="showmenu($event)">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
@@ -20,7 +20,7 @@
   </div>
 </header>
 
-<div class="mobile-nav wrapper-x min-height-100-vh">
+<div class="mobile-nav wrapper-x min-height-100-vh {{openNav?'open-nav':''}}">
   <div class="w-100 mobile-bar py-1 h-100">
     <div class="main-wrap py-2 mx-auto d-flx h-100 flex-dir-col j-c-c al-i-c">
       <ul class="none">

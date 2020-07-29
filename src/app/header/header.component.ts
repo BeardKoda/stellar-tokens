@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  openNav=false
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   showmenu(val){
     console.log(val)
+    this.openNav=!this.openNav
   }
   
 }

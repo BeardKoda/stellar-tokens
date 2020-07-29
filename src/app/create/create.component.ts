@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { TokenService } from '../shared/token.service';
+import { SnackService } from '../shared/snack.service';
 
 // var Stellar =StellarSdk;
 @Component({
@@ -19,7 +20,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     // private route: ActivatedRoute
-    private TokenS: TokenService
+    private TokenS: TokenService,
+    private SnackS: SnackService
     ) { }
 
   ngOnInit(): void {
@@ -47,7 +49,7 @@ export class CreateComponent implements OnInit {
         return;
     }
     this.loading = true;
-    console.log(this.f, this.loading);
+    // console.log(this.f, this.loading);
     var moba = {
       assetCode:this.f.assetCode.value,
       networkType: this.f.networkType.value,
@@ -63,6 +65,13 @@ export class CreateComponent implements OnInit {
     }
     this.TokenS.createAsset(moba).then((resp)=>{
       console.log(resp);
+      this.SnackS.success(resp, 'Okay');
+    }).catch((err)=>{
+      console.log(err);
+      this.SnackS.error(err, 'Try again');
+      this.loading=false;
+      this.submitted=false;
+      // this.form.reset();
     });
   }
 

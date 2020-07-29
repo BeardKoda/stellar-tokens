@@ -29,28 +29,28 @@ export class TokenService {
     var distAcct:any = this.validateSeed(tokenData.distSecret);
     if (!issuerAcct) {
       console.log("Invalid Issuer Secret Key");
-      return Promise.reject("Invalid Issuer Secret Key")
+      return Promise.reject("Invalid Issuer Secret Key");
     }else{
       var asset = this.generateAsset(tokenData.assetType, tokenData.assetCode, issuerAcct.publicKey());
     }
     if (!tokenData.amount || tokenData.amount <= 0 || Number.isNaN(tokenData.amount)) {
       console.log("Invalid Amount");
-      return Promise.reject("Invalid Amount")
+      return Promise.reject("Invalid Amount");
     }
 
     if (tokenData.issuerSecret == tokenData.distSecret) {
       console.log("Issuer and Distributor can not be the same");
-      return Promise.reject("Issuer and Distributor can not be the same")
+      return Promise.reject("Issuer and Distributor can not be the same");
     }
 
     if (tokenData.distType) {
       if (!tokenData.distAmount || tokenData.distAmount <= 0 || Number.isNaN(tokenData.distAmount)) {
         console.log("Invalid Distribution Amount");
-        return Promise.reject("Invalid Amount")
+        return Promise.reject("Invalid Amount");
       }
       if (!tokenData.distPrice || tokenData.distPrice <= 0 || Number.isNaN(tokenData.distPrice)) {
         console.log("Invalid Distribution Price");
-        return Promise.reject("Invalid Distribution Price")
+        return Promise.reject("Invalid Distribution Price");
       }
     }
 
@@ -186,7 +186,7 @@ export class TokenService {
       tempKeyPair = StellarSdk.Keypair.fromSecret(seed);
     }
     catch(error){
-      console.log("Unable to generate keyPair");
+      // console.log("Unable to generate keyPair");
       return false;
     }
     if (tempKeyPair) {

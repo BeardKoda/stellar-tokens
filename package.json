@@ -24,7 +24,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@types/stellar-sdk": "^0.15.1",
     "rxjs": "~6.5.5",
-    "stellar-sdk": "^5.0.4",
+    "stellar-sdk": "^8.2.3",
     "sweetalert2": "^9.17.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
